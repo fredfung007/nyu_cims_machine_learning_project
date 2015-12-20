@@ -1,0 +1,19 @@
+
+\begin{figure}[htbp]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+	xlabel = Rounds,
+	ylabel = Error Rate,
+	legend pos= north east,
+]
+
+\addplot[color=blue] table[x={round}, y={train}]{table/IonoAdaOriginal.txt};
+\addplot[color=red] table[x={round}, y={test}]{table/IonoAdaOriginal.txt};
+\legend{Training Error,Test error}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\caption{\textbf{Test on dimensions}. The skip-gram mode uses 200K sentence with 21014 words and 3.5M word-context pairs. For one iteration, the model train 200K word-context pairs.}
+\label{fig:d200k}
+\end{figure} 
