@@ -1,0 +1,23 @@
+
+\begin{figure}[htbp]
+\begin{center}
+\resizebox {\columnwidth} {!} {
+
+\begin{tikzpicture}
+\begin{axis}[
+	xlabel = Rounds,
+	ylabel = Error Rate,
+	legend pos= north east
+]
+
+\addplot[color=blue] table[x={round}, y={trainmean}]{table/iono_avg_noise_02.txt};
+\addplot[color=red] table[x={round}, y={testmean}]{table/iono_avg_noise_02.txt};
+\addplot[dashed, domain=0:50] {0.12};
+\legend{training error,test error}
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Adaboost test on Ionosphere. 20\% noise}
+\label{fig:ada IonoAdan5}
+\end{center}
+\end{figure}

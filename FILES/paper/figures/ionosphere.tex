@@ -12,6 +12,8 @@
 
 \addplot[color=blue] table[x={round}, y={train}]{table/IonoAdaOriginal.txt};
 \addplot[color=red] table[x={round}, y={test}]{table/IonoAdaOriginal.txt};
+\addplot[dashed, domain=0:50] {0.12};
+\addplot[dotted, domain=0:50] {0.05};
 \legend{training error,test error}
 \end{axis}
 \end{tikzpicture}
