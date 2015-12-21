@@ -13,12 +13,12 @@
 
 \addplot[color=blue] table[x={round}, y={train}]{table/IonoDeepOriginal.txt};
 \addplot[color=red] table[x={round}, y={test}]{table/IonoDeepOriginal.txt};
-
+\addplot[dashed, domain=0:50] {0.12};
 \legend{train error, test error}
 \end{axis}
 \end{tikzpicture}
 }
-\caption{Deepboost running on Ionosphere with noise.}
+\caption{Deepboost running on Ionosphere with original data.}
 \label{adaIonoDeep}
 \end{center}
 \end{figure}

@@ -13,12 +13,12 @@
 
 \addplot[color=blue] table[x={round}, y={train}]{table/IonoDeepn5.txt};
 \addplot[color=red] table[x={round}, y={test}]{table/IonoDeepn5.txt};
-
+\addplot[dashed, domain=0:50] {0.12};
 \legend{train error, test error}
 \end{axis}
 \end{tikzpicture}
 }
-\caption{Deepboost running on Ionosphere with noise 5\%.}
+\caption{Deepboost running on Ionosphere with 5\% noise.}
 \label{adaIonoDeepn5}
 \end{center}
 \end{figure}
