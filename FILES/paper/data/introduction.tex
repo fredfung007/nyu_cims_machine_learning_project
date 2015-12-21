@@ -3,4 +3,17 @@ The fundamental idea of ensemble methods is to construct a combination of weak b
 Multiple ensemble methods, including boosting\cite{}, bagging\cite{}, and decision tree ensemble\cite{}, are being introduced in the past 20 years.
 Boosting algorithms took a significant place in ensemble methods. Adaboost\cite{freund1997decision} and the recently introduced Deepboost\cite{cortes2014deep}
 are typical boosting algorithms with a good experimental result without overfitting the training set. They both have good theoretical learning bound
-and benefit directly from minimizing the learning bound. However, the experimental robustness of these algorithms have not been tested before.
+and benefit directly from minimizing the learning bound.
+
+Boosting algorithms maintains a set of weights over the original training set $S$, and adjust these weights each iteration.
+They utilize the base classifiers and create a combination of these classifiers with a complex classifier that typically has a good performance.
+Boosting increases weight of samples that are mislabeled by the base classifier and decreases weight of samples that are correctly labeled during each iteration.
+Therefore, the algorithm will keep focus on the misclassified samples.
+As we shall discuss later, noise is typically distributed densely near the misclassified samples.
+Adaboost has been shown to be very effective in practical (Quinlan, 1996).
+Since Adaboost is a special case of Deepboost by setting $\lambda=0$ and $\beta=0$, Deepboost will always out performs Adaboost.
+Therefore, both of these boosting algorithm will have a good performance in practical.
+However, the experimental robustness of these algorithms have not been tested before.
+
+Our work is to test the robustness of boosting algorithms with experiments by introducing realistic noise into the training dataset.
+Finally, an explanation of the results is given based on the theoretical learning bound from both algorithms.
