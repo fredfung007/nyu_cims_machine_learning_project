@@ -1,2 +1,17 @@
 \section{Methods}
 %主要写我们做了哪些事情，各个算法的参数都是怎么选择的。
+We tested Adaboost and Deepboost on the UCI dataset, ionosphere\cite{Lichman2013}. We randomly split the data to two parts; 80\% for the training data and 20\% for testing.
+
+\subsection{Deepboost}
+Following the work from Cortes et al. \cite{cortes2014deep}, we use the $H_1^{stumps}$ as the base classifier for Deepboost.
+The Rademacher complexity of $H_1^{stumps}$ can be bounded by its growth function.
+It is trivial to see that
+\[\Pi_{H_1^{stumps}}(m) \leq 2md,\]
+since there are $2m$ distinct threshold functions for each dimension with $m$ points. Therefore,
+\[\mathfrak{R}_m (H_1^{stumps})\leq \sqrt{\frac{2\log (2md)}{m}}.\]
+
+By now, we have the notation from Deepboost
+\[\Lambda_j=\lambda\mathfrak{R}_m (H_1^{stumps}) +\beta.\]
+where we conducted experiments for $\lambda \in \{10^{-i}:i=3,\cdots, 7\}$ and $\beta \in \{10^{-i}:i=3,\cdots, 7\}$ as well, and optimize the training error on these experiments.
+
+We optimize the parameter by minimizing the 10-fold cross validation, and then measure the error by testing data.

@@ -10,7 +10,7 @@ They utilize the base classifiers and create a combination of these classifiers 
 Boosting increases weight of samples that are mislabeled by the base classifier and decreases weight of samples that are correctly labeled during each iteration.
 Therefore, the algorithm will keep focus on the misclassified samples.
 As we shall discuss later, noise is typically distributed densely near the misclassified samples.
-Adaboost has been shown to be very effective in practical (Quinlan, 1996).
+Adaboost has been shown to be very effective in practical\cite{quinlan1996bagging}.
 Since Adaboost is a special case of Deepboost by setting $\lambda=0$ and $\beta=0$, Deepboost will always out performs Adaboost.
 Therefore, both of these boosting algorithm will have a good performance in practical.
 However, the experimental robustness of these algorithms have not been tested before.

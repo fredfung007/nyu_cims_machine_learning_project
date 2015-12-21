@@ -21,27 +21,33 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{mohri2012foundations}
-M.~Mohri, A.~Rostamizadeh, and A.~Talwalkar, \emph{Foundations of machine
-  learning}.\hskip 1em plus 0.5em minus 0.4em\relax MIT press, 2012.
-
-\bibitem{zhu2003eliminating}
-X.~Zhu, X.~Wu, and Q.~Chen, ``Eliminating class noise in large datasets,'' in
-  \emph{ICML}, vol.~3, 2003, pp. 920--927.
-
 \bibitem{freund1997decision}
 Y.~Freund and R.~E. Schapire, ``A decision-theoretic generalization of on-line
   learning and an application to boosting,'' \emph{Journal of computer and
   system sciences}, vol.~55, no.~1, pp. 119--139, 1997.
+
+\bibitem{cortes2014deep}
+C.~Cortes, M.~Mohri, and U.~Syed, ``Deep boosting,'' in \emph{Proceedings of
+  the 31st International Conference on Machine Learning (ICML-14)}, 2014, pp.
+  1179--1187.
+
+\bibitem{quinlan1996bagging}
+J.~R. Quinlan, ``Bagging, boosting, and c4. 5,'' in \emph{AAAI/IAAI, Vol. 1},
+  1996, pp. 725--730.
 
 \bibitem{dietterich2000experimental}
 T.~G. Dietterich, ``An experimental comparison of three methods for
   constructing ensembles of decision trees: Bagging, boosting, and
   randomization,'' \emph{Machine learning}, vol.~40, no.~2, pp. 139--157, 2000.
 
-\bibitem{cortes2014deep}
-C.~Cortes, M.~Mohri, and U.~Syed, ``Deep boosting,'' in \emph{Proceedings of
-  the 31st International Conference on Machine Learning (ICML-14)}, 2014, pp.
-  1179--1187.
+\bibitem{zhu2003eliminating}
+X.~Zhu, X.~Wu, and Q.~Chen, ``Eliminating class noise in large datasets,'' in
+  \emph{ICML}, vol.~3, 2003, pp. 920--927.
+
+\bibitem{Lichman2013}
+\BIBentryALTinterwordspacing
+M.~Lichman, ``{UCI} machine learning repository,'' 2013. [Online]. Available:
+  \url{http://archive.ics.uci.edu/ml}
+\BIBentrySTDinterwordspacing
 
 \end{thebibliography}
