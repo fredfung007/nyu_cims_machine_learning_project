@@ -12,6 +12,8 @@ namespace DeepBoost
         int roundLimit;
         Collection<double [ ]> trainingData;
         int [ ] labels;
+        Collection<double [ ]> testData;
+        int [ ] testlabels;
         int dimension = 32;
         HypothesisSet hypothesisSet;
         Double [ ] LAMBDA;
@@ -22,23 +24,25 @@ namespace DeepBoost
         {
             this . roundLimit = roundLimit;
             this . LAMBDA = lambda;
-            S = new Double [ roundLimit ];
-            eta = new Double [ roundLimit ];
+            S = new Double [ roundLimit + 1 ];
+            eta = new Double [ roundLimit + 1 ];
             S [ 1 ] = 1;
         }
 
         public void boost ( )
         {
+            Collection<Double> trainingerror = new Collection<Double> ( );
+            Collection<Double> testerror = new Collection<Double> ( );
             int sampleSize = trainingData . Count;
             double [ ] distribution = new double [ sampleSize ];
             for ( int i = 0 ; i < sampleSize ; i++ )
             {
                 distribution [ i ] = 1.0 / sampleSize;
             }
-            for ( int t = 1 ; t <= roundLimit ; t++ )
+            for ( int t = 1 ; t < roundLimit ; t++ )
             {
                 // for each round
-                Console . WriteLine ( "Round " + t );
+                //Console . WriteLine ( "Round " + t );
                 // find a threshold function
                 int j = 0;
                 double maxd = double.MinValue;
@@ -119,11 +123,25 @@ namespace DeepBoost
                 {
                     distribution [ m ] = -Math . Exp ( 1 - hypothesisSet . getPrediction ( t , trainingData [ m ] , labels [ m ] ) ) / S [ t + 1 ];
                 }
-                this . validate ( t ); 
+                trainingerror . Add ( this . validate ( t ) );
+                testerror . Add ( this . testerror ( t ) );
             }
+
+            //foreach ( Double err in trainingerror )
+            //{
+            //    Console . Write ( err . ToString ( ) + " " );
+            //}
+            //Console . WriteLine ( );
+            //foreach ( Double err in testerror )
+            //{
+            //    Console . Write ( err . ToString ( ) + " " );
+            //}
+            Console . WriteLine ( trainingerror [ trainingerror . Count - 1 ] );
+            Console . WriteLine ( testerror [ testerror . Count - 1 ] );
+            Console . WriteLine ( );
         }
 
-        public void validate ( int time )
+        public Double validate ( int time )
         {
             Double error=0.0;
             for ( int m = 0 ; m < trainingData . Count ; m++ )
@@ -132,7 +150,22 @@ namespace DeepBoost
                     error += 1;
             }
             error /= trainingData . Count;
-            Console . WriteLine ( error );
+            //Console . WriteLine ( error );
+            return error;
+
+        }
+
+        public Double testerror ( int time )
+        {
+            Double error = 0.0;
+            for ( int m = 0 ; m < testData . Count ; m++ )
+            {
+                if ( Math . Sign ( hypothesisSet . getPrediction ( time , this . testData [ m ] , this . testlabels [ m ] ) ) == -1 )
+                    error += 1;
+            }
+            error /= testData . Count;
+            //Console . WriteLine ( error );
+            return error;
 
         }
 
@@ -141,6 +174,11 @@ namespace DeepBoost
             this . trainingData = t;
             this . labels = l;
             hypothesisSet = new HypothesisSet ( roundLimit , dimension , trainingData . Count , trainingData );
+        }
+        public void SetTest ( Collection<double [ ]> t , int [ ] l )
+        {
+            this . testData = t;
+            this . testlabels = l;
         }
     }
 }
