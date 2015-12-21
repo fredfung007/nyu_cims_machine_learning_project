@@ -7,6 +7,7 @@ Many other publications have used different procedure to add noise into the trai
 The procedure is to set each training sample’s label to a random class with probability $r$.
 Both of these procedures are adding noise with a uniform distribution over the entire training data.
 
+\subsection{Distribution of Realistic Noise}
 However, in actual datasets noise are not distributed with a uniform fashion across the entire dataset.
 In Xingquan et al.’s work\cite{zhu2003eliminating}, a general method to eliminate noise from training data is introduced.
 In this algorithm, noise identification is based on the majority and non-objection schemes,
@@ -17,3 +18,16 @@ More generally, realistic noise distribution should not be uniform over the enti
 Following the definition of Adaboost, the distribution $D_t(i)$ updated during each iteration of Adaboost is a perfect simulation of the training error distribution after round $t$.
 Since $D_t(i)$ is updated with according to the loss function, the distribution would be updated with a higher level where empirical errors are denser.
 Therefore, the distribution from Adaboost after $T$ rounds(finished) would be suitable for introducing realistic noise.
+
+\subsection{Margin}
+Following the margin theory in Adaboost, we have the margin defined as
+\[\rho(x) = y \frac{ \mathbf{\alpha} \cdot \mathbf{h}(x) }{ \| \mathbf{\alpha}\|_2 }.\]
+The distribution maintained by Adaboost is
+\[D_{t+1}(i) = \frac{\exp( -y_i \mathbf{\alpha}_t \cdot \mathbf{h}_t (x_i) ) }{m \prod_{s=1}^t Z_s}.\]
+
+It it trivial to see that $D_{t+1}(i)$ has a negative correlation with margin $\rho$.
+Therefore, since we are introducing noise with the distribution after $T$ iterations of Adaboost with some stopping criteria,
+the samples whose margin are relatively small, i.e. that are closer to the threshold hyperplane in our experiment later and
+are difficult to classify by boosting, will have a higher distribution of noise.
+This makes the noise more realistic than the uniform distribution over the sample in a sense that
+noise are typically distributed at the samples that has a small margin and are difficult to classify by boosting.

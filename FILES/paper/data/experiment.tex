@@ -1,4 +1,5 @@
 \section{Results}
+\input{data/resultfigure}
 Observe that with the exponential loss, Deepboost has a smaller test error than Adaboost, which is in accordance with Cortes et al.’s work\cite{cortes2014deep}.
 Noise (realistic), in general, does not affect the boosting algorithms harshly, which is different from Dietterich’s work\cite{dietterich2000experimental}.
 As is reported from Cortes et al. it is difficult to obtain statistically significant results for small datasets.
@@ -9,11 +10,8 @@ while figure \ref{adaionon5} to \ref{adaionon20} shows the training error and te
 corresponding level of 5\%, 10\% and 20\%. On the other hand, figure \ref{adaIonoDeep} to \ref{adaIonoDeepn20} shows the training
 and test error of Deepboost on those datasets with noise.
 
-\input{figures/ionosphere.tex}
-\input{figures/ionospheren5a.tex}
-\input{figures/ionospheren10a.tex}
-\input{figures/ionospheren20a.tex}
-\input{figures/ionodeep.tex}
-\input{figures/ionodeepn5.tex}
-\input{figures/ionodeepn10.tex}
-\input{figures/ionodeepn20.tex}
+In figure \ref{adaionon5} to \ref{adaionon20} and figure \ref{adaIonoDeep} to \ref{adaIonoDeepn20},
+with the increase of the noise, the training error is increased.
+An intuitive explanation would be that the training error contains many of the noise that is being introduced.
+These noise are distributed near the sample whose margin are relatively small.
+Therefore, these noise would be intuitively difficult to classify correctly by boosting.
