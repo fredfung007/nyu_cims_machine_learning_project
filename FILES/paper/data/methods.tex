@@ -2,6 +2,9 @@
 %主要写我们做了哪些事情，各个算法的参数都是怎么选择的。
 We tested Adaboost and Deepboost on the UCI dataset, ionosphere\cite{Lichman2013}. We randomly split the data to two parts; 80\% for the training data and 20\% for testing.
 \subsection{Adaboost}
+In our experiment, the boosting stump as our base classifier since it is commonly used in practice.
+\[\mathfrak{R}_m (stump)\leq \sqrt{\frac{2\log (2md)}{m}}.\]
+
 
 \subsection{Deepboost}
 Following the work from Cortes et al. \cite{cortes2014deep}, we use the $H_1^{stumps}$ as the base classifier for Deepboost.
