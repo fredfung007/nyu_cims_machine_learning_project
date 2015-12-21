@@ -1,19 +1,22 @@
 
 \begin{figure}[htbp]
 \begin{center}
+\resizebox {\columnwidth} {!} {
+
 \begin{tikzpicture}
 \begin{axis}[
-	xlabel = Rounds,
+	xlabel = Iterations,
 	ylabel = Error Rate,
-	legend pos= north east,
+	legend pos= north east
 ]
 
 \addplot[color=blue] table[x={round}, y={train}]{table/IonoAdan10.txt};
 \addplot[color=red] table[x={round}, y={test}]{table/IonoAdan10.txt};
-\legend{Training Error,Test error}
+\legend{training error,test error}
 \end{axis}
 \end{tikzpicture}
+}
+\caption{Adaboost running  on Ionosphere.}
+\label{fig:ada IonoAdan10}
 \end{center}
-\caption{\textbf{Adaboost Test on Ionosphere}.}
-\label{fig:ada iono}
 \end{figure}

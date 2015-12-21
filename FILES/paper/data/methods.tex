@@ -1,6 +1,7 @@
 \section{Methods}
 %主要写我们做了哪些事情，各个算法的参数都是怎么选择的。
 We tested Adaboost and Deepboost on the UCI dataset, ionosphere\cite{Lichman2013}. We randomly split the data to two parts; 80\% for the training data and 20\% for testing.
+\subsection{Adaboost}
 
 \subsection{Deepboost}
 Following the work from Cortes et al. \cite{cortes2014deep}, we use the $H_1^{stumps}$ as the base classifier for Deepboost.
@@ -11,7 +12,10 @@ since there are $2m$ distinct threshold functions for each dimension with $m$ po
 \[\mathfrak{R}_m (H_1^{stumps})\leq \sqrt{\frac{2\log (2md)}{m}}.\]
 
 By now, we have the notation from Deepboost
-\[\Lambda_j=\lambda\mathfrak{R}_m (H_1^{stumps}) +\beta.\]
+\[\Lambda_j=\lambda\cdot\mathfrak{R}_m (H_1^{stumps}) +\beta.\]
 where we conducted experiments for $\lambda \in \{10^{-i}:i=3,\cdots, 7\}$ and $\beta \in \{10^{-i}:i=3,\cdots, 7\}$ as well, and optimize the training error on these experiments.
 
 We optimize the parameter by minimizing the 10-fold cross validation, and then measure the error by testing data.
+
+In all of our experiments, the number of iterations was set to 50. We also test the result for 100 rounds, but the test error remains basically the same.
+As we shall see, in some experiments the training error decreases vastly and reaches to zero after 40 iterations.
