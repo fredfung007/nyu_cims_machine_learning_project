@@ -34,11 +34,11 @@ namespace DeepBoost
         static void boosting( DeepBoost deepboost )
         {            
             Collection<Double [ ]> dataset = new Collection<Double [ ]> ( );
-            Int32 [ ] label = new Int32 [ 295 ];
-            StreamReader sr = new StreamReader ( "D:\\train-ionosphere-n5.data" );
+            Int32 [ ] label = new Int32 [ 337 ];
+            StreamReader sr = new StreamReader ( "D:\\train-ionosphere-n20.data" );
 
 
-            for ( int j = 0 ; j < 295 ; j++ )
+            for ( int j = 0 ; j < 337 ; j++ )
             {
                 String temp = sr . ReadLine ( );
                 Double [ ] data = new Double [ 34 ];
