@@ -1,0 +1,19 @@
+
+\begin{figure}[htbp]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+	xlabel = Rounds,
+	ylabel = Error Rate,
+	legend pos= north east,
+]
+
+\addplot[color=blue] table[x={round}, y={train}]{table/IonoAdan10.txt};
+\addplot[color=red] table[x={round}, y={test}]{table/IonoAdan10.txt};
+\legend{Training Error,Test error}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\caption{\textbf{Adaboost Test on Ionosphere}.}
+\label{fig:ada iono}
+\end{figure}

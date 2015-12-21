@@ -1,0 +1,19 @@
+\section{Realistic Noise}
+The impact of noise in the performance of an algorithm is regarded as the robustness.
+In Diettterich’s work\cite{dietterich2000experimental}, multiple levels of noise are added to sample dataset to test the robustness of Adaboost.
+However, the noise introduced was by reverting labels in training data randomly without replacement with a fraction $r$.
+This makes the noise in the training dataset unrealistic.
+Many other publications have used different procedure to add noise into the training data
+The procedure is to set each training sample’s label to a random class with probability $r$.
+Both of these procedures are adding noise with a uniform distribution over the entire training data.
+
+However, in actual datasets noise are not distributed with a uniform fashion across the entire dataset.
+In Xingquan et al.’s work\cite{zhu2003eliminating}, a general method to eliminate noise from training data is introduced.
+In this algorithm, noise identification is based on the majority and non-objection schemes,
+which is founded on the assumptions that noise is distributed according to the distribution of empirical errors.
+The denser the classification errors, the denser the noise in training set.
+More generally, realistic noise distribution should not be uniform over the entire training dataset, but with a relation to the classification error.
+
+Following the definition of Adaboost, the distribution $D_t(i)$ updated during each iteration of Adaboost is a perfect simulation of the training error distribution after round $t$.
+Since $D_t(i)$ is updated with according to the loss function, the distribution would be updated with a higher level where empirical errors are denser.
+Therefore, the distribution from Adaboost after $T$ rounds(finished) would be suitable for introducing realistic noise.
