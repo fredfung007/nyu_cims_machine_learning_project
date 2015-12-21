@@ -1,0 +1,40 @@
+
+
+\begin{figure}
+\begin{center}
+\resizebox {\columnwidth} {!} {
+
+\begin{tikzpicture}
+\begin{axis}[%
+    scale only axis,
+    xmin=0,
+    axis x line*=bottom,
+    axis y line*=left
+]
+\addplot[%
+    scatter=true,
+    only marks,
+    mark=*,
+    color=blue,
+    point meta=explicit symbolic,
+    scatter/@pre marker code/.style={/tikz/mark size=\pgfplotspointmeta/50},
+    scatter/@post marker code/.style={}
+] table [meta index=2, x index=1, y index=0] {table/uniform.txt};
+\addplot[%
+    scatter=true,
+    only marks,
+    mark=*,
+    color=red,
+    point meta=explicit symbolic,
+    scatter/@pre marker code/.style={/tikz/mark size=\pgfplotspointmeta/50},
+    scatter/@post marker code/.style={}
+] table [meta index=2, x index=1, y index=0] {table/uniformr.txt};
+\addplot[dashed]{5};
+\end{axis}
+\end{tikzpicture}%
+
+}
+\caption{Drawing noise according to uniform distribution}
+\label{adaiono}
+\end{center}
+\end{figure}
