@@ -21,6 +21,20 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{freund1996experiments}
+Y.~Freund, R.~E. Schapire \emph{et~al.}, ``Experiments with a new boosting
+  algorithm,'' in \emph{ICML}, vol.~96, 1996, pp. 148--156.
+
+\bibitem{breiman1996bagging}
+L.~Breiman, ``Bagging predictors,'' \emph{Machine learning}, vol.~24, no.~2,
+  pp. 123--140, 1996.
+
+\bibitem{banfield2007comparison}
+R.~E. Banfield, L.~O. Hall, K.~W. Bowyer, and W.~P. Kegelmeyer, ``A comparison
+  of decision tree ensemble creation techniques,'' \emph{Pattern Analysis and
+  Machine Intelligence, IEEE Transactions on}, vol.~29, no.~1, pp. 173--180,
+  2007.
+
 \bibitem{freund1997decision}
 Y.~Freund and R.~E. Schapire, ``A decision-theoretic generalization of on-line
   learning and an application to boosting,'' \emph{Journal of computer and
