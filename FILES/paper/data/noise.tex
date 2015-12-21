@@ -1,11 +1,25 @@
 \section{Realistic Noise}
 The impact of noise in the performance of an algorithm is regarded as the robustness.
 In Diettterich’s work\cite{dietterich2000experimental}, multiple levels of noise are added to sample dataset to test the robustness of Adaboost.
-However, the noise introduced was by reverting labels in training data randomly without replacement with a fraction $r$.
-This makes the noise in the training dataset unrealistic.
-Many other publications have used different procedure to add noise into the training data
-The procedure is to set each training sample’s label to a random class with probability $r$.
-Both of these procedures are adding noise with a uniform distribution over the entire training data.
+However, the noise was introduced by reverting labels in training data randomly without replacement with a fraction $r$.
+This makes the noise in the training dataset unrealistic since the noise is very arbitrary (in figure \ref{fig:uniform}).
+Our idea is to infer the noise distribution through AdaBoost.
+\input{figures/uniformdistribution.tex}
+\input{figures/margindistribution.tex}
+
+\subsection{Margin}
+Following the margin theory in Adaboost, we have the margin defined as
+\[\rho(x) = y \frac{ \mathbf{\alpha} \cdot \mathbf{h}(x) }{ \| \mathbf{\alpha}\|_2 }.\]
+The distribution maintained after $t$ rounds by Adaboost is
+\[D_{t+1}(i) = \frac{\exp( -y_i \mathbf{\alpha}_t \cdot \mathbf{h}_t (x_i) ) }{m \prod_{s=1}^t Z_s}.\]
+
+Intuitively, noise happens when features are not distinguishing. In other words, real world noise happens with high probability when the point has small margin (in figure \ref{fig:margindist}).
+It it trivial to see that $D_{t+1}(i)$ has a negative correlation with margin $\rho$.
+Therefore, since we are introducing noise with the distribution after $t$ iterations of Adaboost with some stopping criteria,
+the samples whose margin are relatively small, i.e. that are closer to the hyperplane in our experiment later and
+are difficult to classify by boosting, will have a higher distribution of noise.
+This makes the noise more realistic than the uniform distribution over the sample in a sense that
+noise are typically distributed at the samples that has a small margin and are difficult to classify by boosting.
 
 \subsection{Distribution of Realistic Noise}
 However, in actual datasets noise are not distributed with a uniform fashion across the entire dataset.
@@ -19,15 +33,4 @@ Following the definition of Adaboost, the distribution $D_t(i)$ updated during e
 Since $D_t(i)$ is updated with according to the loss function, the distribution would be updated with a higher level where empirical errors are denser.
 Therefore, the distribution from Adaboost after $T$ rounds(finished) would be suitable for introducing realistic noise.
 
-\subsection{Margin}
-Following the margin theory in Adaboost, we have the margin defined as
-\[\rho(x) = y \frac{ \mathbf{\alpha} \cdot \mathbf{h}(x) }{ \| \mathbf{\alpha}\|_2 }.\]
-The distribution maintained by Adaboost is
-\[D_{t+1}(i) = \frac{\exp( -y_i \mathbf{\alpha}_t \cdot \mathbf{h}_t (x_i) ) }{m \prod_{s=1}^t Z_s}.\]
 
-It it trivial to see that $D_{t+1}(i)$ has a negative correlation with margin $\rho$.
-Therefore, since we are introducing noise with the distribution after $T$ iterations of Adaboost with some stopping criteria,
-the samples whose margin are relatively small, i.e. that are closer to the threshold hyperplane in our experiment later and
-are difficult to classify by boosting, will have a higher distribution of noise.
-This makes the noise more realistic than the uniform distribution over the sample in a sense that
-noise are typically distributed at the samples that has a small margin and are difficult to classify by boosting.
