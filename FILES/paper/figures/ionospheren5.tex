@@ -1,5 +1,5 @@
 
-\begin{figure}[htbp]
+\begin{figure}
 \begin{center}
 \resizebox {\columnwidth} {!} {
 
@@ -12,11 +12,12 @@
 
 \addplot[color=blue] table[x={round}, y={train}]{table/IonoAdan5.txt};
 \addplot[color=red] table[x={round}, y={test}]{table/IonoAdan5.txt};
-\legend{training error,test error}
+
+\legend{5\% noise test error,10\% noise test error,20\% noise test error}
 \end{axis}
 \end{tikzpicture}
 }
-\caption{Adaboost running  on Ionosphere.}
-\label{fig:ada IonoAdan5}
+\caption{Adaboost running on Ionosphere with noise 5\%.}
+\label{adaionon5}
 \end{center}
 \end{figure}

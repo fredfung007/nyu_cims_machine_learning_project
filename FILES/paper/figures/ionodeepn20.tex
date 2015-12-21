@@ -1,0 +1,24 @@
+
+\begin{figure}
+\begin{center}
+\resizebox {\columnwidth} {!} {
+
+\begin{tikzpicture}
+\begin{axis}[
+	xlabel = Iterations,
+	ylabel = Error Rate,
+	legend pos= north east
+]
+
+
+\addplot[color=blue] table[x={round}, y={train}]{table/IonoDeepn20.txt};
+\addplot[color=red] table[x={round}, y={test}]{table/IonoDeepn20.txt};
+
+\legend{train error, test error}
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Deepboost running on Ionosphere with noise 20\%.}
+\label{adaIonoDeepn20}
+\end{center}
+\end{figure}
