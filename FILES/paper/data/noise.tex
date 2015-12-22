@@ -2,7 +2,7 @@
 The impact of noise in the performance of an algorithm is regarded as the robustness.
 In Diettterich’s work\cite{dietterich2000experimental}, multiple levels of noise are added to sample dataset to test the robustness of Adaboost.
 However, the noise was introduced by reverting labels in training data randomly without replacement with a fraction $r$.
-This makes the noise in the training dataset unrealistic since the noise is very arbitrary (in figure \ref{fig:uniform}).
+This makes the noise in the training dataset unrealistic since the noise is very arbitrary (in figure \ref{uniform}).
 Our idea is to infer the noise distribution through AdaBoost.
 \input{figures/uniformdistribution.tex}
 \input{figures/margindistribution.tex}
@@ -13,7 +13,7 @@ Following the margin theory in Adaboost, we have the margin defined as
 The distribution maintained after $t$ rounds by Adaboost is
 \[D_{t+1}(i) = \frac{\exp( -y_i \mathbf{\alpha}_t \cdot \mathbf{h}_t (x_i) ) }{m \prod_{s=1}^t Z_s}.\]
 
-Intuitively, noise happens when features are not distinguishing. In other words, real world noise happens with high probability when the point has small margin (in figure \ref{fig:margindist}).
+Intuitively, noise happens when features are not distinguishing. In other words, real world noise happens with high probability when the point has small margin (in figure \ref{margindist}).
 It it trivial to see that $D_{t+1}(i)$ has a negative correlation with margin $\rho$.
 Therefore, since we are introducing noise with the distribution after $t$ iterations of Adaboost with some stopping criteria,
 the samples whose margin are relatively small, i.e. that are closer to the hyperplane in our experiment later and
@@ -32,5 +32,3 @@ More generally, realistic noise distribution should not be uniform over the enti
 Following the definition of Adaboost, the distribution $D_t(i)$ updated during each iteration of Adaboost is a perfect simulation of the training error distribution after round $t$.
 Since $D_t(i)$ is updated with according to the loss function, the distribution would be updated with a higher level where empirical errors are denser.
 Therefore, the distribution from Adaboost after $T$ rounds(finished) would be suitable for introducing realistic noise.
-
-
